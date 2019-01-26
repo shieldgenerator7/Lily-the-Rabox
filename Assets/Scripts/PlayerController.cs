@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
         }
         //Update the animation
         animator.SetBool("isWalking", horizontal != 0);
+        animator.SetBool("isJumping", finalY > 0);
+        animator.SetBool("isGrounded", grounded);
         //Update previous input directions
         prevHorizontal = horizontal;
         prevVertical = vertical;
