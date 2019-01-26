@@ -1,0 +1,46 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class upAndDown : MonoBehaviour
+{
+    private Rigidbody2D rb2d;
+    public int space;
+    int movementUp;
+    int movementDown;
+    bool upOrDown = true;
+    //true is up false is down
+    private void Start()
+    {
+        rb2d = GetComponent<Rigidbody2D>();
+    }
+    void FixedUpdate()
+    {
+        if (upOrDown == true)
+        {
+            if (movementUp < space)
+            {
+                rb2d.velocity = Vector3.up;
+                movementUp++;
+            }
+            if (movementUp == space)
+            {
+                movementUp = 0;
+                upOrDown = false;
+            }
+        }
+        if (upOrDown == false)
+        {
+            if (movementDown < space)
+            {
+                rb2d.velocity = Vector3.down;
+                movementDown++;
+            }
+            if (movementDown == space)
+            {
+                movementDown = 0;
+                upOrDown = true;
+            }
+        }
+    }
+}
