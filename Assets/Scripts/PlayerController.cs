@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour
     private float prevVertical = 0;
     private bool grounded = false;
 
+    private Animator animator;
     private Rigidbody2D rb2d;
     private Collider2D coll2d;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         coll2d = GetComponent<Collider2D>();
     }
@@ -65,6 +67,8 @@ public class PlayerController : MonoBehaviour
             scale.x = Mathf.Sign(horizontal);
             transform.localScale = scale;
         }
+        //Update the animation
+        animator.SetBool("isWalking", horizontal != 0);
         //Update previous input directions
         prevHorizontal = horizontal;
         prevVertical = vertical;
