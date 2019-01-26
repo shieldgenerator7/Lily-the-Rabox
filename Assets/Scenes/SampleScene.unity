@@ -766,7 +766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  jumpSpeed: 5
+  jumpSpeed: 7
+  groundSearchDistance: 0.05
 --- !u!50 &1459571413
 Rigidbody2D:
   serializedVersion: 4
