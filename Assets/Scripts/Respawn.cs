@@ -13,7 +13,7 @@ public class Respawn : MonoBehaviour
             respawn();
         }
     }
-    void respawn()
+    public void respawn()
     {
         transform.position = currentCheakpoint.position;
     }
