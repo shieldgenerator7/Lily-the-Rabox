@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 3;
     public float jumpSpeed = 5;
+    public float maxJumps = 2;//how many jumps she can do w/o touching ground
     public float groundSearchDistance = 0.05f;
 
     private float prevHorizontal = 0;
     private float prevVertical = 0;
+    private float jumps = 0;//how many jumps have been made since last touching ground
     private bool grounded = false;
 
     private Animator animator;
@@ -46,14 +48,23 @@ public class PlayerController : MonoBehaviour
         }
         if (vertical > 0)
         {
-            if (grounded)
+            if (prevVertical <= 0)
             {
-                finalY = vertical * jumpSpeed;
+                jumps++;
+                if (grounded)
+                {
+                    finalY = vertical * jumpSpeed;
+                }
+                else if (jumps <= maxJumps)
+                {
+                    finalY = vertical * jumpSpeed;
+                }
             }
         }
         else if (prevVertical > 0)
         {
             finalY = Mathf.Min(0, rb2d.velocity.y);
+            jumps++;
         }
         //Actually move the character
         Vector2 velocity = rb2d.velocity;
@@ -90,6 +101,7 @@ public class PlayerController : MonoBehaviour
             if (rch2d)
             {
                 grounded = true;
+                jumps = 0;
                 break;
             }
         }
