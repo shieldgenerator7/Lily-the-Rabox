@@ -16,7 +16,8 @@ public class BackgroundParallax : MonoBehaviour
         offsets = new Dictionary<SpriteRenderer, Vector3>();
         foreach (SpriteRenderer sr in FindObjectsOfType<SpriteRenderer>())
         {
-            if (sr.sortingLayerName == "Background")
+            if (sr.sortingLayerName == "Background"
+                || sr.sortingLayerName == "Foreground")
             {
                 backgrounds.Add(sr);
                 offsets.Add(sr, sr.transform.position - transform.position);
