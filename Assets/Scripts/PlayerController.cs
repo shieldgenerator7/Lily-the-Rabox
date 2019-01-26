@@ -92,18 +92,28 @@ public class PlayerController : MonoBehaviour
 
     private void checkGroundedState()
     {
-        grounded = false;
+        if (obstacleInDirection(Vector2.down))
+        {
+            jumps = 0;
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+    }
+
+    private bool obstacleInDirection(Vector2 dir) {
         RaycastHit2D[] results = new RaycastHit2D[10];
-        int count = coll2d.Cast(Vector2.down, results, groundSearchDistance, true);
+        int count = coll2d.Cast(dir, results, groundSearchDistance, true);
         for (int i = 0; i < count; i++)
         {
             RaycastHit2D rch2d = results[i];
             if (rch2d)
             {
-                grounded = true;
-                jumps = 0;
-                break;
+                return true;
             }
         }
+        return false;
     }
 }
