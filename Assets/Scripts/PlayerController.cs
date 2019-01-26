@@ -13,12 +13,7 @@ public class PlayerController : MonoBehaviour
     private float prevHorizontal = 0;
     private float prevVertical = 0;
     private float jumps = 0;//how many jumps have been made since last touching ground
-    private RaycastHit2D groundedHit;
-    private bool Grounded
-    {
-        get { return groundedHit.collider != null; }
-        set { throw new System.NotImplementedException(); }
-    }
+    private bool grounded = false;
 
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -45,7 +40,7 @@ public class PlayerController : MonoBehaviour
         float finalY = rb2d.velocity.y;
         if (horizontal != 0)
         {
-            if (Grounded || !wallInWay(horizontal))
+            if (grounded || !wallInWay(horizontal))
             {
                 finalX = horizontal * moveSpeed;
             }
@@ -59,7 +54,7 @@ public class PlayerController : MonoBehaviour
             if (prevVertical <= 0)
             {
                 jumps++;
-                if (Grounded)
+                if (grounded)
                 {
                     finalY = vertical * jumpSpeed;
                 }
@@ -86,12 +81,10 @@ public class PlayerController : MonoBehaviour
             scale.x = Mathf.Sign(horizontal);
             transform.localScale = scale;
         }
-        //Update the player rotation
-        updateRotation();
         //Update the animation
         animator.SetBool("isWalking", horizontal != 0);
+        animator.SetBool("isGrounded", grounded);
         animator.SetBool("isJumping", finalY > 0 && vertical > 0);
-        animator.SetBool("isGrounded", Grounded);
         //Update previous input directions
         prevHorizontal = horizontal;
         prevVertical = vertical;
@@ -104,19 +97,23 @@ public class PlayerController : MonoBehaviour
 
     private void checkGroundedState()
     {
-        groundedHit = obstacleInDirection(-transform.up);
-        if (Grounded)
+        if (obstacleInDirection(Vector2.down))
         {
             jumps = 0;
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
         }
     }
 
     private bool wallInWay(float direction)
     {
-        return obstacleInDirection(transform.right * Mathf.Sign(direction)) != null;
+        return obstacleInDirection(Vector2.right * Mathf.Sign(direction));
     }
 
-    private RaycastHit2D obstacleInDirection(Vector2 dir)
+    private bool obstacleInDirection(Vector2 dir)
     {
         RaycastHit2D[] results = new RaycastHit2D[10];
         int count = coll2d.Cast(dir, results, groundSearchDistance, true);
@@ -125,29 +122,9 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D rch2d = results[i];
             if (rch2d)
             {
-                return rch2d;
+                return true;
             }
         }
-        return new RaycastHit2D();
-    }
-
-    private void updateRotation()
-    {
-        if (Grounded)
-        {
-            Debug.Log("grounded hit normal: " + groundedHit.normal);
-            if (Vector3.Angle(groundedHit.normal, transform.up) < 90)
-            {
-                transform.up = groundedHit.normal;
-            }
-            else
-            {
-                transform.up = Vector3.up;
-            }
-        }
-        else
-        {
-            transform.up = Vector3.up;
-        }
+        return false;
     }
 }
