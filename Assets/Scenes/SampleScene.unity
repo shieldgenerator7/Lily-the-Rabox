@@ -929,7 +929,7 @@ MonoBehaviour:
   moveSpeed: 3
   jumpSpeed: 7
   maxJumps: 2
-  groundSearchDistance: 0.01
+  groundSearchDistance: 0.05
 --- !u!50 &1459571413
 Rigidbody2D:
   serializedVersion: 4

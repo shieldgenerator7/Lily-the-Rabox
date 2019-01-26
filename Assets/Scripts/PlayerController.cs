@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         velocity.y = finalY;
         rb2d.velocity = velocity;
         //Update the player looking direction
-        if (horizontal != 0 && grounded)
+        if (horizontal != 0)
         {
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Sign(horizontal);
