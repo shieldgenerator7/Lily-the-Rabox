@@ -11,8 +11,9 @@ public class FrawkController : MonoBehaviour
     public GameObject mouthSprite;
 
     //Runtime vars
-    private bool talking = false;
     private float lastBlinkTime = 0;
+    public bool talking = false;
+    private float lastMouthMoveTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class FrawkController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Blinking
         if (Time.time > lastBlinkTime + eyeBlinkDelay)
         {
             eyeAnimator.SetBool("shouldBlink", true);
@@ -31,6 +33,15 @@ public class FrawkController : MonoBehaviour
         else
         {
             eyeAnimator.SetBool("shouldBlink", false);
+        }
+        //Talking
+        if (talking)
+        {
+            if (Time.time > lastMouthMoveTime + mouthMoveDelay)
+            {
+                mouthSprite.SetActive(!mouthSprite.activeSelf);
+                lastMouthMoveTime = Time.time;
+            }
         }
     }
 }
