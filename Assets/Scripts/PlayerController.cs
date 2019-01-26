@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 3;
     public float jumpSpeed = 5;
     public float maxJumps = 2;//how many jumps she can do w/o touching ground
-    public float groundSearchDistance = 0.05f;
+    public float groundSearchDistance = 0.01f;
 
     private float prevHorizontal = 0;
     private float prevVertical = 0;
@@ -40,7 +40,10 @@ public class PlayerController : MonoBehaviour
         float finalY = rb2d.velocity.y;
         if (horizontal != 0)
         {
-            finalX = horizontal * moveSpeed;
+            if (grounded || !wallInWay(horizontal))
+            {
+                finalX = horizontal * moveSpeed;
+            }
         }
         else if (prevHorizontal != 0)
         {
@@ -103,7 +106,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool obstacleInDirection(Vector2 dir) {
+    private bool wallInWay(float direction)
+    {
+        return obstacleInDirection(Vector2.right * Mathf.Sign(direction));
+    }
+
+    private bool obstacleInDirection(Vector2 dir)
+    {
         RaycastHit2D[] results = new RaycastHit2D[10];
         int count = coll2d.Cast(dir, results, groundSearchDistance, true);
         for (int i = 0; i < count; i++)
