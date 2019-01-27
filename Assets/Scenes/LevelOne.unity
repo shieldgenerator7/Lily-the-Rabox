@@ -948,27 +948,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2063614499}
-  - {fileID: 409463243}
-  - {fileID: 1714989198}
   - {fileID: 2104060284}
-  - {fileID: 656364404}
-  - {fileID: 595599554}
-  - {fileID: 611683129}
   - {fileID: 778819456}
-  - {fileID: 659928090}
+  - {fileID: 409463243}
   - {fileID: 423082531}
-  - {fileID: 1149236616}
-  - {fileID: 2046822187}
-  - {fileID: 2111475747}
-  - {fileID: 780923886}
   - {fileID: 783048139}
-  - {fileID: 1335921248}
+  - {fileID: 595599554}
   - {fileID: 1681005425}
-  - {fileID: 931312610}
-  - {fileID: 1229796550}
   - {fileID: 418972569}
-  - {fileID: 540548693}
+  - {fileID: 1149236616}
+  - {fileID: 1714989198}
+  - {fileID: 656364404}
+  - {fileID: 2046822187}
+  - {fileID: 780923886}
+  - {fileID: 611683129}
+  - {fileID: 2111475747}
+  - {fileID: 659928090}
   - {fileID: 796043426}
+  - {fileID: 931312610}
+  - {fileID: 1335921248}
+  - {fileID: 1229796550}
+  - {fileID: 540548693}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1510,6 +1510,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 7.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131978500920766567, guid: e2cf7cda99293134d979c404b0994828,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131978500920766567, guid: e2cf7cda99293134d979c404b0994828,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2cf7cda99293134d979c404b0994828, type: 3}
