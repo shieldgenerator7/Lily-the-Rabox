@@ -689,6 +689,133 @@ MonoBehaviour:
   eyeAnimator: {fileID: 272615919}
   mouthSprite: {fileID: 990156525}
   talking: 0
+--- !u!82 &496754960
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496754956}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &496754961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496754956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d7841f8038b93de41ba9052fe79507e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceTexts:
+  - My, what big thighs you have!
+  - The branch is too high! There's no way you could reach it!
+  - The forest will consume you! And then, so shall I!
+  - The ledge is too far! You're sure to fall in the water!
+  - You're going the wrong way! My stomache's over here!
+  - Rabix soup sounds good...
+  - Shall I have the white wine, or the red?
+  - You do not belong in this forest, young Rabix
+  voiceLines:
+  - {fileID: 8300000, guid: fe2c1c3228fc3fa41bc2f3f9f8fafe12, type: 3}
+  - {fileID: 8300000, guid: 63356e3a38a868041b9a92a4f0192806, type: 3}
+  - {fileID: 8300000, guid: b42c223bb918dbc47b0be24065feb397, type: 3}
+  - {fileID: 8300000, guid: f672113f6b09bc44d982a4363a608808, type: 3}
+  - {fileID: 8300000, guid: e2f5186ac41997b48a54d23ae50f2cd5, type: 3}
+  - {fileID: 8300000, guid: 96bae10542736aa4c9df44bad6ac6092, type: 3}
+  - {fileID: 8300000, guid: f063a78bb7f930f49b3ae370248f946a, type: 3}
+  - {fileID: 8300000, guid: ddda859735ca8b5418a3082c9506c716, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

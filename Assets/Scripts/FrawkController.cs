@@ -18,7 +18,7 @@ public class FrawkController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<NPCVoiceLines>().onVoiceLineActivate += startTalking;
     }
 
     // Update is called once per frame
@@ -43,5 +43,12 @@ public class FrawkController : MonoBehaviour
                 lastMouthMoveTime = Time.time;
             }
         }
+    }
+
+    public void startTalking(bool talking)
+    {
+        this.talking = talking;
+        mouthSprite.SetActive(talking);
+        lastMouthMoveTime = Time.time;
     }
 }
