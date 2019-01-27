@@ -296,10 +296,10 @@ Transform:
   - {fileID: 1384902194}
   - {fileID: 848800049}
   - {fileID: 1932424736}
+  - {fileID: 1872040217}
   - {fileID: 2147017759}
   - {fileID: 1456070}
   - {fileID: 2132928301}
-  - {fileID: 1872040217}
   - {fileID: 119450595}
   - {fileID: 2053662010}
   m_Father: {fileID: 0}
@@ -4679,7 +4679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a225aafec5bcce9449e230e60edd5234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 2077622598}
+  followTarget: {fileID: 2077622598}
 --- !u!1 &1005832376
 GameObject:
   m_ObjectHideFlags: 0
