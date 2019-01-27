@@ -9,6 +9,7 @@ public class FrawkController : MonoBehaviour
 
     public Animator eyeAnimator;
     public GameObject mouthSprite;
+    private List<EyeController> eyes = new List<EyeController>();
 
     //Runtime vars
     private float lastBlinkTime = 0;
@@ -19,6 +20,19 @@ public class FrawkController : MonoBehaviour
     void Start()
     {
         GetComponent<NPCVoiceLines>().onVoiceLineActivate += startTalking;
+        foreach (EyeController eye in GetComponentsInChildren<EyeController>())
+        {
+            eyes.Add(eye);
+        }
+        //Get player, if exists
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+        {
+            foreach (EyeController eye in eyes)
+            {
+                eye.trackObject(player);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -50,5 +64,14 @@ public class FrawkController : MonoBehaviour
         this.talking = talking;
         mouthSprite.SetActive(talking);
         lastMouthMoveTime = Time.time;
+        //Get player, if exists
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+        {
+            foreach (EyeController eye in eyes)
+            {
+                eye.trackObject(player);
+            }
+        }
     }
 }
