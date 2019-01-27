@@ -9,13 +9,6 @@ public class PlayerController : MonoBehaviour
     public float maxJumps = 2;//how many jumps she can do w/o touching ground
     public float groundSearchDistance = 0.01f;
 
-    public AudioClip audJump;
-    public AudioClip audDoubleJump;
-    public AudioClip audCheckPoint;
-    public AudioClip audLevelComplete;
-    public AudioClip audFoundFamily;
-    public AudioClip audCollectable;
-
     private float prevHorizontal = 0;
     private float prevVertical = 0;
     private float jumps = 0;//how many jumps have been made since last touching ground
@@ -28,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb2d;
     private Collider2D coll2d;
-    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +28,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         coll2d = GetComponent<Collider2D>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -87,14 +78,6 @@ public class PlayerController : MonoBehaviour
                 else if (jumps <= maxJumps)
                 {
                     finalY = vertical * jumpSpeed;
-                }
-                if (jumps == 1)
-                {
-                    audioSource.PlayOneShot(audJump);
-                }
-                else
-                {
-                    audioSource.PlayOneShot(audDoubleJump);
                 }
             }
         }
@@ -184,18 +167,5 @@ public class PlayerController : MonoBehaviour
     {
         controlsActive = activeControls;
         overrideControlDirection = overrideDirection;
-        if (!activeControls)
-        {
-            audioSource.PlayOneShot(audLevelComplete);
-        }
-    }
-
-    public void playSoundCheckPoint()
-    {
-        audioSource.PlayOneShot(audCheckPoint);
-    }
-    public void playSoundPickup()
-    {
-        audioSource.PlayOneShot(audCollectable);
     }
 }
