@@ -9,7 +9,6 @@ public class Cheakpoint : MonoBehaviour
         if (coll2D.gameObject.CompareTag("Player"))
         {
             coll2D.gameObject.GetComponent<Respawn>().currentCheakpoint = transform;
-            coll2D.gameObject.GetComponent<PlayerController>().playSoundCheckPoint();
         }
     }
 }
