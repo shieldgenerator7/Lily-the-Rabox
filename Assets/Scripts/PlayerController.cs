@@ -132,6 +132,19 @@ public class PlayerController : MonoBehaviour
         //Update previous input directions
         prevHorizontal = horizontal;
         prevVertical = vertical;
+        //cheats
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            FindObjectOfType<Collectables>().cherry += 10;
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha9))
+        {
+            moveSpeed--;
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha0))
+        {
+            moveSpeed++;
+        }
     }
 
     private void FixedUpdate()
