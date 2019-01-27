@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Activator : MonoBehaviour
 {
-    public GameObject go;
+    public List<GameObject> gos = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,10 @@ public class Activator : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            go.SetActive(true);
+            foreach (GameObject go in gos)
+            {
+                go.SetActive(true);
+            }
         }
     }
 }
