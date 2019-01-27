@@ -8,7 +8,7 @@ public class DoorCode : MonoBehaviour
     public GameObject cherryFinder;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (cherryFinder.GetComponent<Collectables>().cherry == cherryCount)
+        if (cherryFinder.GetComponent<Collectables>().cherry >= cherryCount)
         {
             Destroy(gameObject);
         }
