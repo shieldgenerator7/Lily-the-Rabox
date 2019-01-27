@@ -1162,7 +1162,7 @@ PrefabInstance:
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
@@ -2760,7 +2760,7 @@ PrefabInstance:
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
@@ -7865,7 +7865,7 @@ PrefabInstance:
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
@@ -11083,7 +11083,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507095894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.61, y: 2.7, z: -10}
+  m_LocalPosition: {x: -0.61, y: 2.7, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 711652397}
@@ -11855,7 +11855,7 @@ PrefabInstance:
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
@@ -15767,7 +15767,7 @@ PrefabInstance:
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1442371998469076279, guid: ff666651fe50dea4b86e007cf6b4c59e,
         type: 3}
