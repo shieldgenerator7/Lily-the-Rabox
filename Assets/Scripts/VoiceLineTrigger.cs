@@ -13,7 +13,6 @@ public class VoiceLineTrigger : MonoBehaviour
         {
             int voiceLineIndex = voiceLineIndices[Random.Range(0, voiceLineIndices.Count)];
             voiceBox.playVoiceLine(voiceLineIndex);
-            Destroy(gameObject);
         }
     }
 }

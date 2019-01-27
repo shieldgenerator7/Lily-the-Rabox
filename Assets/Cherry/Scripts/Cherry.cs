@@ -9,6 +9,7 @@ public class Cherry : MonoBehaviour
     {
         if (coll2D.gameObject.CompareTag("Player")) {
             collectable.GetComponent<Collectables>().cherry++;
+            coll2D.gameObject.GetComponent<PlayerController>().playSoundPickup();
             Destroy(gameObject);
             }
     }
