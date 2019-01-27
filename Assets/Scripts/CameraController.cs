@@ -4,19 +4,45 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject playerObject;
+    [SerializeField]
+    private GameObject followTarget;
+    public GameObject FollowTarget
+    {
+        get { return followTarget; }
+        set
+        {
+            followTarget = value;
+            offset.x = offset.y = 0;
+        }
+    }
 
     private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position - playerObject.transform.position;
+        offset = transform.position - followTarget.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = playerObject.transform.position + offset;
+        if (followTarget)
+        {
+            transform.position = followTarget.transform.position + offset;
+        }
+    }
+
+    public void setFollowTarget(GameObject go, bool clearOffset)
+    {
+        followTarget = go;
+        if (clearOffset)
+        {
+            offset.x = offset.y = 0;
+        }
+        else
+        {
+            offset = transform.position - go.transform.position;
+        }
     }
 }

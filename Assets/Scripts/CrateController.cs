@@ -29,8 +29,8 @@ public class CrateController : MonoBehaviour
             GameObject spawn = Instantiate(unboxPrefab);
             spawn.transform.position = transform.position;
             CameraController cam = FindObjectOfType<CameraController>();
-            if (cam.playerObject == gameObject) { 
-                cam.playerObject = spawn;
+            if (cam.FollowTarget == gameObject) { 
+                cam.setFollowTarget(spawn, false);
             }
             Destroy(gameObject);
         }   

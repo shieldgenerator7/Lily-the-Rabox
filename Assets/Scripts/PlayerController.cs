@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float moveSpeed = 3;
     public float jumpSpeed = 5;
     public float maxJumps = 2;//how many jumps she can do w/o touching ground
@@ -15,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private float jumps = 0;//how many jumps have been made since last touching ground
     private bool grounded = false;
     private bool awake = false;
+
+    private bool controlsActive = true;
+    private Vector2 overrideControlDirection = Vector2.zero;
 
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -31,9 +33,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        if (Input.GetButton("Jump") || vertical > 0)
+        float horizontal;
+        float vertical;
+        if (controlsActive)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+            if (Input.GetButton("Jump"))
+            {
+                vertical = 1;
+            }
+        }
+        else
+        {
+            horizontal = overrideControlDirection.x;
+            vertical = overrideControlDirection.y;
+        }
+        if (vertical > 0)
         {
             vertical = 1;
         }
@@ -145,5 +161,11 @@ public class PlayerController : MonoBehaviour
     public void AwakenCharacter()
     {
         awake = true;
+    }
+
+    public void overrideControls(bool activeControls, Vector2 overrideDirection)
+    {
+        controlsActive = activeControls;
+        overrideControlDirection = overrideDirection;
     }
 }

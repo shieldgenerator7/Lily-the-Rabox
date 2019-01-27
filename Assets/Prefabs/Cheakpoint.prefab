@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 1442371998469076273}
   - component: {fileID: 1442371998469076272}
   - component: {fileID: 1442371998469076275}
+  - component: {fileID: 2291818411643007993}
   m_Layer: 0
-  m_Name: cheakpoint
+  m_Name: Cheakpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af7301839667a440a8b679790571c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thePlayer: {fileID: 0}
 --- !u!61 &1442371998469076275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +141,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &2291818411643007993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442371998469076274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b1f5b510948820c419f1af072eff3222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
