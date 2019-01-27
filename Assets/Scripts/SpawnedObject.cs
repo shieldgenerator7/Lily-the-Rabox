@@ -5,17 +5,22 @@ using UnityEngine;
 public class SpawnedObject : MonoBehaviour
 {
     public Vector2 initialDirection = Vector2.zero;
+    public float maxLifeDuration = 0;
     public Sprite destroyedSprite;
     public float destroyDelay = 0.2f;
     public float destroySpeed = 0.01f;
 
+    public ObjectSpawner objectSpawner;
+
     private float destroyStartTime = 0;
+    private float spawnedTime = 0;
 
     private SpriteRenderer sr;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        spawnedTime = Time.time;
     }
 
     private void Update()
@@ -27,7 +32,17 @@ public class SpawnedObject : MonoBehaviour
             sr.color = c;
             if (Time.time > destroyStartTime + destroyDelay)
             {
+                sr.color = new Color(0, 0, 0, 0);
+                GetComponent<Collider2D>().enabled = false;
                 Destroy(gameObject);
+            }
+        }
+        if (maxLifeDuration > 0)
+        {
+            if (Time.time > spawnedTime + maxLifeDuration)
+            {
+                maxLifeDuration = 0;
+                destroy();
             }
         }
     }
@@ -37,6 +52,9 @@ public class SpawnedObject : MonoBehaviour
         destroyStartTime = Time.time;
         Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
         rb2d.velocity = rb2d.velocity.normalized * destroySpeed;
-        sr.sprite = destroyedSprite;
+        if (destroyedSprite != null)
+        {
+            sr.sprite = destroyedSprite;
+        }
     }
 }
