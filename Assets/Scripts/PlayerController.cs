@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private float prevVertical = 0;
     private float jumps = 0;//how many jumps have been made since last touching ground
     private bool grounded = false;
+    private bool awake = false;
 
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -69,22 +70,32 @@ public class PlayerController : MonoBehaviour
             finalY = Mathf.Min(0, rb2d.velocity.y);
             jumps++;
         }
-        //Actually move the character
-        Vector2 velocity = rb2d.velocity;
-        velocity.x = finalX;
-        velocity.y = finalY;
-        rb2d.velocity = velocity;
-        //Update the player looking direction
-        if (horizontal != 0)
+        if (awake)
         {
-            Vector3 scale = transform.localScale;
-            scale.x = Mathf.Sign(horizontal);
-            transform.localScale = scale;
+            //Actually move the character
+            Vector2 velocity = rb2d.velocity;
+            velocity.x = finalX;
+            velocity.y = finalY;
+            rb2d.velocity = velocity;
+            //Update the player looking direction
+            if (horizontal != 0)
+            {
+                Vector3 scale = transform.localScale;
+                scale.x = Mathf.Sign(horizontal);
+                transform.localScale = scale;
+            }
+            //Update the animation
+            animator.SetBool("isWalking", horizontal != 0);
+            animator.SetBool("isGrounded", grounded);
+            animator.SetBool("isJumping", finalY > 0 && vertical > 0);
         }
-        //Update the animation
-        animator.SetBool("isWalking", horizontal != 0);
-        animator.SetBool("isGrounded", grounded);
-        animator.SetBool("isJumping", finalY > 0 && vertical > 0);
+        else
+        {
+            if (vertical > 0)
+            {
+                animator.SetBool("isAwake", true);
+            }
+        }
         //Update previous input directions
         prevHorizontal = horizontal;
         prevVertical = vertical;
@@ -126,5 +137,13 @@ public class PlayerController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    /// <summary>
+    /// Meant to be called by the animation event
+    /// </summary>
+    public void AwakenCharacter()
+    {
+        awake = true;
     }
 }
