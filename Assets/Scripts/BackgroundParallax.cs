@@ -7,20 +7,22 @@ using UnityEngine;
 /// </summary>
 public class BackgroundParallax : MonoBehaviour
 {
+    private Vector3 originalPosition;
     private List<SpriteRenderer> backgrounds;
-    private Dictionary<SpriteRenderer, Vector3> offsets;
+    private Dictionary<SpriteRenderer, Vector3> originalPositions;
     // Start is called before the first frame update
     void Start()
     {
+        originalPosition = transform.position;
         backgrounds = new List<SpriteRenderer>();
-        offsets = new Dictionary<SpriteRenderer, Vector3>();
+        originalPositions = new Dictionary<SpriteRenderer, Vector3>();
         foreach (SpriteRenderer sr in FindObjectsOfType<SpriteRenderer>())
         {
             if (sr.sortingLayerName.Contains("Background")
                 || sr.sortingLayerName == "Foreground")
             {
                 backgrounds.Add(sr);
-                offsets.Add(sr, sr.transform.position - transform.position);
+                originalPositions.Add(sr, sr.transform.position);
             }
         }
     }
@@ -28,9 +30,10 @@ public class BackgroundParallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 dir = (transform.position - originalPosition);
         foreach (SpriteRenderer sr in backgrounds)
         {
-            sr.transform.position = (transform.position * (-1 * sr.sortingOrder) / 100) + offsets[sr];
+            sr.transform.position = (dir * (-1 * sr.sortingOrder) / 100) + originalPositions[sr];
         }
     }
 }
